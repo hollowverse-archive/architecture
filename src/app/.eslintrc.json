@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "../../node_modules/@hollowverse/config/eslint/browser/.eslintrc.json",
+    "../../node_modules/@hollowverse/config/eslint/react/typescript/.eslintrc.json"
+  ],
+  "env": {
+    "browser": true,
+    "node": false,
+    "shared-node-browser": true,
+    "commonjs": true
+  },
+  "settings": {
+    "polyfills": ["fetch", "intersectionobserver"]
+  }
+}

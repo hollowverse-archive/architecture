@@ -6,7 +6,11 @@
     },
     {
       "validation": "PascalCase",
-      "patterns": []
+      "patterns": [
+        "src/app/components/**",
+        "src/app/pages/**",
+        "src/app/hocs/**"
+      ]
     },
     {
       "validation": "ignore",
@@ -18,7 +22,10 @@
         "**/docker-compose.yml",
         "**/Dockerfile*",
         "**/LICENSE",
-        "**/README.md"
+        "**/README.md",
+        "src/app/assets/algolia/*",
+        "_*.scss",
+        "c__*"
       ]
     }
   ]

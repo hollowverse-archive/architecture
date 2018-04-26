@@ -1,0 +1,16 @@
+{
+  "rules": [
+    {
+      "validation": "PascalCase",
+      "patterns": [
+        "src/app/components/**",
+        "src/app/pages/**",
+        "src/app/hocs/**"
+      ]
+    },
+    {
+      "validation": "ignore",
+      "patterns": ["src/app/assets/algolia/*", "_*.scss", "c__*"]
+    }
+  ]
+}

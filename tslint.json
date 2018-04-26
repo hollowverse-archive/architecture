@@ -1,6 +1,6 @@
 {
-  "extends": ["./node_modules/@hollowverse/config/tslint/tslint.json"],
-  "rules": {
-    "no-multiline-string": false
-  }
+  "extends": [
+    "./node_modules/@hollowverse/config/tslint/tslint.json",
+    "./node_modules/@hollowverse/config/tslint/rxjs.json"
+  ]
 }

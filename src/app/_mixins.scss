@@ -1,0 +1,74 @@
+@mixin truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/**
+ * Allow text to be truncated instead of wrapping to a new line
+ * @see https://css-tricks.com/flexbox-truncated-text/
+ */
+@mixin truncate-flex-child($min-width: 0) {
+  // This is required to allow flex children to shrink below
+  // the implicit width
+  min-width: $min-width;
+
+  &,
+  > * {
+    @include truncate;
+  }
+}
+
+/*
+* Fonts
+*/
+@mixin font-11px {
+  font-size: 11px;
+}
+@mixin font-13px {
+  font-size: 13px;
+  line-height: 1.4;
+}
+@mixin font-16px {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@mixin font-20px {
+  font-size: 20px;
+  font-weight: bold;
+}
+@mixin font-26px {
+  font-size: 26px;
+  font-weight: normal;
+  line-height: 1;
+}
+
+/*
+* Effects
+*/
+@mixin illumination($color, $zIndex: auto) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: $zIndex;
+  width: calc(100vw * 0.35);
+  height: 100%;
+  background-image: linear-gradient(
+    79deg,
+    rgba($color, 0) 35%,
+    rgba($color, 1) 50%,
+    rgba($color, 0) 75%
+  );
+  animation: animate-illumination 0.8s linear infinite;
+}
+
+@keyframes animate-illumination {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX($page-max-width);
+  }
+}

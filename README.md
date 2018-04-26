@@ -1,1 +1,1 @@
-# @hollowverse/architecture
+# architectures

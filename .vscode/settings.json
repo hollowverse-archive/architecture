@@ -12,7 +12,7 @@
     "editor.formatOnSave": false
   },
   "typescript.implementationsCodeLens.enabled": true,
-  "typescript.referencesCodeLens.enabled": false,
+  "typescript.referencesCodeLens.enabled": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "files.exclude": {
     "**/node_modules/**": true
@@ -21,5 +21,9 @@
     "reportUnusedDisableDirectives": true
   },
   "eslint.validate": ["typescript", "typescriptreact"],
-  "eslint.enable": false
+  "eslint.enable": false,
+  "files.associations": {
+    ".gqlconfig": "javascript",
+    ".stylelintrc": "json"
+  }
 }
