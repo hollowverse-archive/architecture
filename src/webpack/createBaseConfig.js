@@ -20,22 +20,9 @@ const {
   isEsNext,
 } = require('@hollowverse/utils/helpers/env');
 
-const { API_ENDPOINT = 'https://api.hollowverse.com/graphql' } = process.env;
-
 module.exports.createBaseConfig = () => ({
   mode: isProd ? 'production' : 'development',
   devServer: {
-    proxy: {
-      '/__api': {
-        target: API_ENDPOINT,
-        secure: false,
-        logLevel: 'error',
-        pathRewrite: { '^/api': '' },
-        headers: {
-          host: new URL(API_ENDPOINT).host,
-        },
-      },
-    },
     host: '0.0.0.0',
     port: 8080,
     publicPath,

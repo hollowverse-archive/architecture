@@ -7,18 +7,12 @@ import createBrowserHistory from 'history/createBrowserHistory';
 
 import { HotApp as App } from 'components/App/App';
 import { createConfiguredStore } from 'store/createConfiguredStore';
-import { unhandledErrorThrown } from 'store/features/logging/actions';
 import {
   loadIntersectionObserverPolyfill,
   loadFetchPolyfill,
   loadUrlPolyfill,
 } from 'helpers/loadPolyfill';
 import { HelmetProvider } from 'react-helmet-async';
-import {
-  AppDependenciesContext,
-  defaultAppDependencies,
-} from 'appDependenciesContext';
-import { routesMap } from 'routesMap';
 
 const history = createBrowserHistory();
 
@@ -31,13 +25,11 @@ class Root extends React.PureComponent {
   render() {
     return (
       <HelmetProvider>
-        <AppDependenciesContext.Provider value={defaultAppDependencies}>
-          <Provider store={store}>
-            <Router history={history}>
-              <App routesMap={routesMap} />
-            </Router>
-          </Provider>
-        </AppDependenciesContext.Provider>
+        <Provider store={store}>
+          <Router history={history}>
+            <App />
+          </Router>
+        </Provider>
       </HelmetProvider>
     );
   }
@@ -70,29 +62,3 @@ Promise.all([
 ])
   .then(renderOnDomReady)
   .catch(renderOnDomReady);
-
-window.addEventListener('error', ({ message, filename, lineno, colno }) => {
-  store.dispatch(
-    unhandledErrorThrown({
-      message,
-      source: filename,
-      line: lineno,
-      column: colno,
-    }),
-  );
-});
-
-window.addEventListener(
-  'unhandledrejection',
-  // @ts-ignore
-  ({ reason }: PromiseRejectionEvent) => {
-    store.dispatch(
-      unhandledErrorThrown({
-        message:
-          typeof reason === 'object' && 'message' in reason
-            ? reason.message
-            : String(reason),
-      }),
-    );
-  },
-);

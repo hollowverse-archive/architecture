@@ -12,11 +12,8 @@
     "editor.formatOnSave": false
   },
   "typescript.implementationsCodeLens.enabled": true,
-  "typescript.referencesCodeLens.enabled": true,
+  "typescript.referencesCodeLens.enabled": false,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "files.exclude": {
-    "**/node_modules/**": true
-  },
   "eslint.options": {
     "reportUnusedDisableDirectives": true
   },
