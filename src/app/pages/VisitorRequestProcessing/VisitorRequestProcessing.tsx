@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { Container, Row, Col, Button } from 'reactstrap';
 
-import css from './Home.module.scss';
+import css from './VisitorRequestProcessing.module.scss';
 
-class HomeClass extends React.PureComponent<{}, {}> {
+class VisitorRequestProcessingClass extends React.PureComponent<{}, {}> {
   container: any;
 
   // componentDidMount() {
@@ -49,13 +49,10 @@ class HomeClass extends React.PureComponent<{}, {}> {
   };
 
   render() {
-    return (
-      <div>
-        This page contains diagrams and information to help you understand the
-        architectures of the various components that make up Hollowverse
-      </div>
-    );
+    return <div>Visitor request processing</div>;
   }
 }
 
-export const Home = hot(module)(connect()(HomeClass));
+export const VisitorRequestProcessing = hot(module)(
+  connect()(VisitorRequestProcessingClass),
+);

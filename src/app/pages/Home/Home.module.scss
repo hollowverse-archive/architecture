@@ -1,51 +1,22 @@
 @import 'variables.scss';
 
 .root {
-  width: 100%;
-  max-width: $page-max-width;
-  flex-grow: 1;
-  align-self: center;
+  // width: 100%;
+  // max-width: $page-max-width;
+  // flex-grow: 1;
+  // align-self: center;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  margin-top: 40px;
 
-  .search-container {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 90%;
+  .left-nav {
+    border-right: solid 1px $color-border-light;
+  }
 
-    button {
-      background: transparent;
-      padding: $spacing-5px 0;
-      display: flex;
-      align-items: center;
-      height: 100%;
-      cursor: pointer;
-      .icon {
-        transition: opacity 0.2s ease-in-out;
-        opacity: 0.5;
-      }
-      &:hover,
-      &:focus {
-        .icon {
-          opacity: 1;
-        }
-      }
-    }
-
-    .search-box {
-      padding: $spacing-10px;
-      display: flex;
-      align-items: center;
-
-      .input {
-        flex-grow: 1;
-        font-size: large;
-      }
-    }
+  .content {
+    margin-top: 40px;
   }
 }
