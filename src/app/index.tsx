@@ -7,11 +7,6 @@ import createBrowserHistory from 'history/createBrowserHistory';
 
 import { HotApp as App } from 'components/App/App';
 import { createConfiguredStore } from 'store/createConfiguredStore';
-import {
-  loadIntersectionObserverPolyfill,
-  loadFetchPolyfill,
-  loadUrlPolyfill,
-} from 'helpers/loadPolyfill';
 import { HelmetProvider } from 'react-helmet-async';
 
 const history = createBrowserHistory();
@@ -55,10 +50,4 @@ if (module.hot) {
   module.hot.accept();
 }
 
-Promise.all([
-  loadIntersectionObserverPolyfill(),
-  loadUrlPolyfill(),
-  loadFetchPolyfill(),
-])
-  .then(renderOnDomReady)
-  .catch(renderOnDomReady);
+renderOnDomReady();

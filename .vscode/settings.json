@@ -22,5 +22,8 @@
   "files.associations": {
     ".gqlconfig": "javascript",
     ".stylelintrc": "json"
+  },
+  "files.exclude": {
+    "**/node_modules/**": true
   }
 }

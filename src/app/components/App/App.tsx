@@ -7,8 +7,6 @@ import { LoadableHome } from 'pages/Home/LoadableHome';
 
 import classes from './App.module.scss';
 
-import { ScrollTo } from 'components/ScrollTo/ScrollTo';
-
 /**
  * Main app component
  */
@@ -26,9 +24,6 @@ export const App = class extends React.Component<{}, {}> {
             content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no"
           />
         </Helmet>
-        <Route>
-          {props => <ScrollTo updateKey={props.location.pathname} />}
-        </Route>
         <div className={classes.view}>
           <Switch>
             <Route component={LoadableHome} />
