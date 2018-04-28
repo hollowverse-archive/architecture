@@ -1,7 +1,9 @@
 import { routerMiddleware } from 'react-router-redux';
 import { History } from 'history';
 import { createStore, applyMiddleware, compose, Middleware } from 'redux';
+
 import { reducer } from './reducer';
+import { StoreState } from './types';
 
 declare const global: NodeJS.Global & {
   /**
@@ -24,13 +26,11 @@ declare const module: {
   };
 };
 
-const defaultInitialState: any = {
+const defaultInitialState: StoreState = {
   routing: {
     location: null,
   },
-  statusCode: 200,
-  redirectionUrl: null,
-  shouldFocusSearch: false,
+  selectedArchitectureItem: null,
 };
 
 export function createConfiguredStore({
