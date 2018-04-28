@@ -29,12 +29,12 @@ export const App = class extends React.Component<{}, {}> {
           <h1>Hollowverse Architectures</h1>
 
           <Row className={css.content}>
-            <Col sm={{ size: 3 }} className={css.leftNav}>
+            <Col sm={{ size: 4 }} className={css.leftNav}>
               <Link to="/visitor-request-processing">
                 Visitor request processing
               </Link>
             </Col>
-            <Col sm={{ size: 9 }}>
+            <Col sm={{ size: 8 }}>
               <Switch>
                 <Route
                   path="/visitor-request-processing"
