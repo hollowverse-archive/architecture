@@ -2,6 +2,7 @@ import React from 'react';
 import vis from 'vis';
 import { Card } from 'reactstrap';
 import { connect } from 'react-redux';
+import { isEqual } from 'lodash';
 
 import {
   convertToVisNode,
@@ -9,12 +10,14 @@ import {
 } from 'architecturalComponents/helpers';
 import { ArchitecturalComponent, Link } from 'app/types';
 import { getSelectedArchitectureItem } from 'store/reducers';
-import { StoreState } from 'store/types';
+import { StoreState, ActionTypeToPayloadType } from 'store/types';
 
 import css from './Architecture.module.scss';
 
 type StoreProps = {
-  selectedArchitectureItem: string | null;
+  selectedArchitectureItem:
+    | ActionTypeToPayloadType['SET_SELECTED_ARCHITECTURE_ITEM']
+    | null;
 };
 
 type OwnProps = {
@@ -43,14 +46,20 @@ export const Architecture = connect<StoreProps, null, OwnProps, StoreState>(
 
     componentWillReceiveProps(nextProps: Props) {
       if (
-        this.props.selectedArchitectureItem !==
-          nextProps.selectedArchitectureItem &&
+        !isEqual(
+          this.props.selectedArchitectureItem,
+          nextProps.selectedArchitectureItem,
+        ) &&
         this.network !== null
       ) {
         if (nextProps.selectedArchitectureItem) {
           const selectedNode = nextProps.components
             .map(convertToVisNode)
-            .find(({ id }) => nextProps.selectedArchitectureItem === id);
+            .find(
+              ({ id }) =>
+                nextProps.selectedArchitectureItem !== null &&
+                nextProps.selectedArchitectureItem.itemId === id,
+            );
 
           this.network.setSelection({
             nodes: selectedNode ? [selectedNode.id as string] : [],

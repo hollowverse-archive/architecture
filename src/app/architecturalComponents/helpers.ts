@@ -23,24 +23,22 @@ export function convertToVisNode({
 }
 
 export function convertToVisEdge(link: Link): vis.EdgeOptions {
-  const [to, from, options] = link;
+  const { to, from, Documentation, ...rest } = link;
 
   return {
     from: from.id,
     to: to.id,
-    ...options,
+    ...rest,
   };
 }
 
-export function enhanceLink(link: Link): Link {
-  const [from, to, options] = link;
+export function enhanceLink(link: Partial<Link>): Link {
+  const { from, to } = link;
 
-  return [
-    from,
-    to,
-    {
-      id: `${from.id}-${to.id}`,
-      ...options,
-    },
-  ];
+  // tslint:disable-next-line:no-object-literal-type-assertion
+  return {
+    // tslint:disable-next-line:no-non-null-assertion
+    id: `${from!.id}-${to!.id}`,
+    ...link,
+  } as Link;
 }

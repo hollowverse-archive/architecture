@@ -14,7 +14,7 @@ type DispatchProps = {
 };
 
 type OwnProps = {
-  title: string;
+  title?: string;
 };
 
 type Props = OwnProps & DispatchProps;
@@ -38,7 +38,9 @@ export const AcDocumentation = connect<{}, DispatchProps, OwnProps>(undefined, {
               <span aria-hidden="true">&times;</span>
             </button>
 
-            <CardTitle>{this.props.title}</CardTitle>
+            {this.props.title ? (
+              <CardTitle>{this.props.title}</CardTitle>
+            ) : null}
 
             <div>{this.props.children}</div>
           </CardBody>

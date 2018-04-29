@@ -4,15 +4,20 @@ import {
   RouterAction,
 } from 'react-router-redux';
 
+import { linkMap } from 'architecturalComponents/linkMap';
+
 /** A map of all app actions to their corresponding payloads */
 export type ActionTypeToPayloadType = {
-  SET_SELECTED_ARCHITECTURE_ITEM: { itemId: string; architecture: string };
+  SET_SELECTED_ARCHITECTURE_ITEM: {
+    itemId: string;
+    architecture: keyof typeof linkMap;
+  };
   '@@router/LOCATION_CHANGE': LocationChangeAction['payload'];
   '@@router/CALL_HISTORY_METHOD': RouterAction['payload'];
 };
 
 export type AppState = {
-  selectedArchitectureItem: string | null;
+  selectedArchitectureItem: { itemId: string; architecture: string } | null;
 };
 
 export type StoreState = Readonly<AppState & { routing: RouterState }>;
