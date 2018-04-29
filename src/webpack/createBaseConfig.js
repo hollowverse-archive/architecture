@@ -7,8 +7,6 @@ const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const BabelMinifyPlugin = require('babel-minify-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const { URL } = require('url');
-
 const { compact } = require('lodash');
 
 const { srcDirectory, excludedPatterns, publicPath } = require('./variables');

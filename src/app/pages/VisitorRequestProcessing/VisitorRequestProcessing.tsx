@@ -12,12 +12,9 @@ const { visitorComponent, browserComponent } = componentMap;
 
 const visitorBrowserLink = linkMap.visitorRequestProcessing['visitor-browser'];
 
-class VisitorRequestProcessingClass extends React.PureComponent<
-  {
-    setSelectedItem(selectedItem: any): any;
-  },
-  {}
-> {
+class VisitorRequestProcessingClass extends React.PureComponent<{
+  setSelectedItem(selectedItem: any): any;
+}> {
   components = [visitorComponent, browserComponent];
 
   links: Link[] = [visitorBrowserLink];

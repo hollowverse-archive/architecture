@@ -1,3 +1,5 @@
+// TODO: fix disabled rule below
+/* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import cc from 'classcat';
@@ -11,7 +13,7 @@ import { LeftNav } from 'components/LeftNav/LeftNav';
 
 import css from './App.module.scss';
 
-export const App = class extends React.Component<{}, {}> {
+export const App = class extends React.Component {
   render() {
     return (
       <div className={cc([css.root])}>

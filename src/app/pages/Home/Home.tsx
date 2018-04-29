@@ -1,7 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
-class HomeClass extends React.PureComponent<{}, {}> {
+class HomeClass extends React.PureComponent {
   render() {
     return (
       <div>
