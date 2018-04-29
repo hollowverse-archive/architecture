@@ -1,6 +1,6 @@
 const path = require('path');
 
-exports.publicPath = '/static/';
+exports.publicPath = '/';
 exports.srcDirectory = path.join(__dirname, '..', 'app');
 
 const distDirectory = path.join(
