@@ -53,17 +53,12 @@ export const Architecture = connect<StoreProps, null, OwnProps, StoreState>(
         this.network !== null
       ) {
         if (nextProps.selectedArchitectureItem) {
-          const selectedNode = nextProps.components
-            .map(convertToVisNode)
-            .find(
-              ({ id }) =>
-                nextProps.selectedArchitectureItem !== null &&
-                nextProps.selectedArchitectureItem.itemId === id,
-            );
+          const selectedNode = this.getSelectedNode(nextProps);
+          const selectedEdge = this.getSelectedEdge(nextProps);
 
           this.network.setSelection({
             nodes: selectedNode ? [selectedNode.id as string] : [],
-            edges: [],
+            edges: selectedEdge ? [selectedEdge.id as string] : [],
           });
         } else {
           this.network.unselectAll();
@@ -74,6 +69,26 @@ export const Architecture = connect<StoreProps, null, OwnProps, StoreState>(
     componentDidMount() {
       this.createArchitecture(this.props);
     }
+
+    getSelectedNode = (props: Props) => {
+      return props.components
+        .map(convertToVisNode)
+        .find(
+          ({ id }) =>
+            props.selectedArchitectureItem !== null &&
+            props.selectedArchitectureItem.itemId === id,
+        );
+    };
+
+    getSelectedEdge = (props: Props) => {
+      return props.links
+        .map(convertToVisEdge)
+        .find(
+          ({ id }) =>
+            props.selectedArchitectureItem !== null &&
+            props.selectedArchitectureItem.itemId === id,
+        );
+    };
 
     createArchitecture(props: Props) {
       const nodes = new vis.DataSet();
