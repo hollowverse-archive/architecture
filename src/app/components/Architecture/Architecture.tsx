@@ -20,7 +20,7 @@ type StoreProps = {
 type OwnProps = {
   components: ArchitecturalComponent[];
   links: Link[];
-  onClick(a: { componentId: string; linkId: string }): any;
+  onClick(itemId: string): any;
 };
 
 type Props = OwnProps & StoreProps;
@@ -51,7 +51,6 @@ export const Architecture = connect<StoreProps, null, OwnProps, StoreState>(
           const selectedNode = nextProps.components
             .map(convertToVisNode)
             .find(({ id }) => nextProps.selectedArchitectureItem === id);
-          // const selectedLink = nextProps.links.find(({ id }) => nextProps.selectedArchitectureItem === id);
 
           this.network.setSelection({
             nodes: selectedNode ? [selectedNode.id as string] : [],
@@ -85,7 +84,10 @@ export const Architecture = connect<StoreProps, null, OwnProps, StoreState>(
       this.network.on('click', params => {
         const { nodes: _nodes, edges: _edges } = params;
 
-        this.props.onClick({ componentId: _nodes[0], linkId: _edges[0] });
+        const itemId =
+          _nodes.length > 0 ? _nodes[0] : _edges.length > 0 ? _edges[0] : null;
+
+        this.props.onClick(itemId);
       });
     }
 

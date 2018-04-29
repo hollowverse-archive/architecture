@@ -4,10 +4,13 @@ import { connect } from 'react-redux';
 import { Card, CardTitle, CardText, CardBody, Button } from 'reactstrap';
 
 import { setSelectedItem } from 'store/actions';
+import { ActionTypeToPayloadType } from 'store/types';
 // import closeSvg from '!!url-loader!assets/close.svg';
 
 type DispatchProps = {
-  setSelectedItem(selectedItem: any): any;
+  setSelectedItem(
+    payload: ActionTypeToPayloadType['SET_SELECTED_ARCHITECTURE_ITEM'] | null,
+  ): any;
 };
 
 type OwnProps = {
@@ -16,7 +19,7 @@ type OwnProps = {
 
 type Props = OwnProps & DispatchProps;
 
-export const AcDocumentation = connect<null, DispatchProps, OwnProps>(null, {
+export const AcDocumentation = connect<{}, DispatchProps, OwnProps>(undefined, {
   setSelectedItem,
 })(
   class extends React.Component<Props> {

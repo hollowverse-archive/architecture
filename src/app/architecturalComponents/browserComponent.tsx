@@ -3,7 +3,7 @@ import React from 'react';
 import { ArchitecturalComponent } from 'app/types';
 import { AcDocumentation } from 'components/AcDocumentation/AcDocumentation';
 
-export const browser: ArchitecturalComponent = {
+export const browserComponent: ArchitecturalComponent = {
   id: 'browser',
   name: 'Browser',
   description: 'Web browser',

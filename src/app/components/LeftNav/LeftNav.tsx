@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { StoreState } from 'store/types';
 import { getSelectedArchitectureItem } from 'store/reducers';
-import * as components from 'architecturalComponents/components';
+import { componentMap } from 'architecturalComponents/componentMap';
 
 type Props = {
   selectedArchitectureItem: string;
@@ -17,7 +17,7 @@ export const LeftNav = connect((state: StoreState) => ({
   class extends React.Component<Props> {
     getSelectedItem = () =>
       find(
-        components,
+        componentMap,
         component => component.id === this.props.selectedArchitectureItem,
       );
 

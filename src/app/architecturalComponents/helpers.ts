@@ -31,3 +31,16 @@ export function convertToVisEdge(link: Link): vis.EdgeOptions {
     ...options,
   };
 }
+
+export function enhanceLink(link: Link): Link {
+  const [from, to, options] = link;
+
+  return [
+    from,
+    to,
+    {
+      id: `${from.id}-${to.id}`,
+      ...options,
+    },
+  ];
+}

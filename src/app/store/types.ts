@@ -6,7 +6,7 @@ import {
 
 /** A map of all app actions to their corresponding payloads */
 export type ActionTypeToPayloadType = {
-  SET_SELECTED_ARCHITECTURE_ITEM: string;
+  SET_SELECTED_ARCHITECTURE_ITEM: { itemId: string; architecture: string };
   '@@router/LOCATION_CHANGE': LocationChangeAction['payload'];
   '@@router/CALL_HISTORY_METHOD': RouterAction['payload'];
 };

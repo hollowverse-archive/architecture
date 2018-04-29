@@ -3,9 +3,14 @@ import { hot } from 'react-hot-loader';
 import { connect } from 'react-redux';
 
 import { Architecture } from 'components/Architecture/Architecture';
-import { visitor, browser } from 'architecturalComponents/components';
+import { componentMap } from 'architecturalComponents/componentMap';
+import { linkMap } from 'architecturalComponents/linkMap';
 import { setSelectedItem } from 'store/actions';
 import { Link } from 'app/types';
+
+const { visitorComponent, browserComponent } = componentMap;
+
+const visitorBrowserLink = linkMap.visitorRequestProcessing['visitor-browser'];
 
 class VisitorRequestProcessingClass extends React.PureComponent<
   {
@@ -13,20 +18,15 @@ class VisitorRequestProcessingClass extends React.PureComponent<
   },
   {}
 > {
-  components = [visitor, browser];
+  components = [visitorComponent, browserComponent];
 
-  links: Link[] = [[visitor, browser, { arrows: 'to, from' }]];
+  links: Link[] = [visitorBrowserLink];
 
-  handleClick = ({
-    componentId,
-    linkId,
-  }: {
-    componentId: string;
-    linkId: string;
-  }) => {
-    const payload = componentId || null;
-
-    this.props.setSelectedItem(payload);
+  handleClick = (itemId: string) => {
+    this.props.setSelectedItem({
+      architecture: 'visitorRequestProcessing',
+      itemId,
+    });
   };
 
   render() {

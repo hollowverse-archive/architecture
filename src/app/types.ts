@@ -5,11 +5,12 @@ export type ArchitecturalComponent = {
   icon?: string;
   name: string;
   description?: string;
-  Documentation: any;
+  Documentation: React.ReactNode;
 };
 
 export type Link = [
   ArchitecturalComponent,
   ArchitecturalComponent,
-  Partial<vis.EdgeOptions>
+  Partial<vis.EdgeOptions>,
+  React.ReactNode
 ];

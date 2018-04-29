@@ -3,7 +3,7 @@ import React from 'react';
 import { ArchitecturalComponent } from 'app/types';
 import { AcDocumentation } from 'components/AcDocumentation/AcDocumentation';
 
-export const visitor: ArchitecturalComponent = {
+export const visitorComponent: ArchitecturalComponent = {
   id: 'visitor',
   name: 'Visitor',
   description: 'Hollowverse visitor',
