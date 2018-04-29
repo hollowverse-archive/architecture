@@ -3,13 +3,13 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter as Router } from 'react-router-redux';
 import domready from 'domready';
 import { render } from 'react-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
+import { createHashHistory } from 'history';
 
 import { HotApp as App } from 'components/App/App';
 import { createConfiguredStore } from 'store/createConfiguredStore';
 import { HelmetProvider } from 'react-helmet-async';
 
-const history = createBrowserHistory();
+const history = createHashHistory();
 
 const { store } = createConfiguredStore({
   history,

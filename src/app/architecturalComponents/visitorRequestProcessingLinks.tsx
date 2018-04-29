@@ -10,22 +10,20 @@ export const visitorRequestProcessing = {
     from: componentMap.visitorComponent,
     to: componentMap.browserComponent,
     Documentation: () => (
-      <>
-        <AcDocumentation>
-          <CardTitle>Visitor → Browser</CardTitle>
+      <AcDocumentation>
+        <CardTitle>Visitor → Browser</CardTitle>
 
-          <p>
-            The visitor requests <code>http:{'//'}hollowverse.com</code> in the
-            browser
-          </p>
+        <p>
+          The visitor requests <code>http:{'//'}hollowverse.com</code> in the
+          browser
+        </p>
 
-          <CardTitle>Visitor ← Browser</CardTitle>
-          <p>
-            The browser displays the content of{' '}
-            <code>http:{'//'}hollowverse.com</code>
-          </p>
-        </AcDocumentation>
-      </>
+        <CardTitle>Visitor ← Browser</CardTitle>
+        <p>
+          The browser displays the content of{' '}
+          <code>http:{'//'}hollowverse.com</code>
+        </p>
+      </AcDocumentation>
     ),
     arrows: 'to, from',
   }),
