@@ -1,4 +1,4 @@
-import { ArchitecturalComponent } from '../types';
+import { ArchitecturalComponent, Link } from '../types';
 import vis from 'vis';
 
 export const colors = {
@@ -8,9 +8,10 @@ export const colors = {
 
 export function convertToVisNode({
   name,
+  id,
 }: ArchitecturalComponent): vis.NodeOptions {
   return {
-    id: name,
+    id: id,
     label: name,
     borderWidth: 0,
     borderWidthSelected: 1,
@@ -21,17 +22,12 @@ export function convertToVisNode({
   };
 }
 
-export function link(
-  from: vis.NodeOptions,
-  to: vis.NodeOptions,
-  color: string,
-  description: string,
-): vis.EdgeOptions & { description: string } {
+export function convertToVisEdge(link: Link): vis.EdgeOptions {
+  const [to, from, options] = link;
+
   return {
     from: from.id,
     to: to.id,
-    arrows: 'to',
-    color: { color, highlight: color },
-    description,
+    ...options,
   };
 }

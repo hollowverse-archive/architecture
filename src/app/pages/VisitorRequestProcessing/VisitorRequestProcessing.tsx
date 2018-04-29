@@ -1,39 +1,39 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import { connect } from 'react-redux';
 
-import { Network } from 'components/Network/Network';
+import { Architecture } from 'components/Architecture/Architecture';
 import { visitor, browser } from 'architecturalComponents/components';
-import { link, colors } from 'architecturalComponents/helpers';
+import { setSelectedItem } from 'store/actions';
+import { Link } from 'app/types';
 
-class VisitorRequestProcessingClass extends React.PureComponent<{}, {}> {
-  container: any;
+class VisitorRequestProcessingClass extends React.PureComponent<
+  {
+    setSelectedItem(selectedItem: any): any;
+  },
+  {}
+> {
+  components = [visitor, browser];
 
-  getNodes = () => [visitor, browser];
+  links: Link[] = [[visitor, browser, { arrows: 'to, from' }]];
 
-  getEdges = () => [
-    link(
-      visitor,
-      browser,
-      colors.green,
-      'Visitor requests Hollowverse content from the browser',
-    ),
-    link(
-      browser,
-      visitor,
-      colors.blue,
-      'Browser returns Hollowverse content to visitor',
-    ),
-  ];
+  handleClick = ({
+    componentId,
+    linkId,
+  }: {
+    componentId: string;
+    linkId: string;
+  }) => {
+    const payload = componentId || null;
 
-  handleClick = (params: any) => {
-    // console.log('params', params);
+    this.props.setSelectedItem(payload);
   };
 
   render() {
     return (
-      <Network
-        nodes={this.getNodes()}
-        edges={this.getEdges()}
+      <Architecture
+        components={this.components}
+        links={this.links}
         onClick={this.handleClick}
       />
     );
@@ -41,5 +41,5 @@ class VisitorRequestProcessingClass extends React.PureComponent<{}, {}> {
 }
 
 export const VisitorRequestProcessing = hot(module)(
-  VisitorRequestProcessingClass,
+  connect(undefined, { setSelectedItem })(VisitorRequestProcessingClass),
 );

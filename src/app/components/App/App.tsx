@@ -4,9 +4,11 @@ import cc from 'classcat';
 import Helmet from 'react-helmet-async';
 import { Route, Switch } from 'react-router';
 import { Link } from 'react-router-dom';
+
 import { LoadableHome } from 'pages/Home/LoadableHome';
 import { LoadableVisitorRequestProcessing } from 'pages/VisitorRequestProcessing/LoadableVisitorRequestProcessing';
 import { Container, Row, Col } from 'reactstrap';
+import { LeftNav } from 'components/LeftNav/LeftNav';
 
 import css from './App.module.scss';
 
@@ -30,9 +32,7 @@ export const App = class extends React.Component<{}, {}> {
 
           <Row className={css.content}>
             <Col sm={{ size: 4 }} className={css.leftNav}>
-              <Link to="/visitor-request-processing">
-                Visitor request processing
-              </Link>
+              <LeftNav />
             </Col>
             <Col sm={{ size: 8 }}>
               <Switch>
