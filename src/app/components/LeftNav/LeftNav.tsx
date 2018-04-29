@@ -18,19 +18,17 @@ export const LeftNav = connect((state: StoreState) => ({
   selectedArchitectureItem: getSelectedArchitectureItem(state),
 }))(
   class extends React.Component<Props> {
-    getSelectedItem = (): { Documentation: any } => {
-      if (this.props.selectedArchitectureItem === null) {
-        return { Documentation: false };
+    getSelectedItem = () => {
+      if (this.props.selectedArchitectureItem !== null) {
+        const { itemId, architecture } = this.props.selectedArchitectureItem;
+
+        return (
+          find(componentMap, component => component.id === itemId) ||
+          find(linkMap[architecture], link => link.id === itemId)
+        );
       }
 
-      const { itemId, architecture } = this.props.selectedArchitectureItem;
-
-      return (
-        find(componentMap, component => component.id === itemId) ||
-        find(linkMap[architecture], link => link.id === itemId) || {
-          Documentation: false,
-        }
-      );
+      return false;
     };
 
     renderLinks = () => {
@@ -44,7 +42,8 @@ export const LeftNav = connect((state: StoreState) => ({
     };
 
     render() {
-      const { Documentation } = this.getSelectedItem();
+      const selectedItem = this.getSelectedItem() as any; // TODO: fix typing
+      const Documentation = selectedItem ? selectedItem.Documentation : false;
 
       return (
         <div>{Documentation ? <Documentation /> : this.renderLinks()}</div>

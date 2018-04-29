@@ -1,7 +1,7 @@
 /* React Component for Architectural Component Documentation */
 import React from 'react';
 import { connect } from 'react-redux';
-import { Card, CardTitle, CardText, CardBody, Button } from 'reactstrap';
+import { Card, CardTitle, CardBody } from 'reactstrap';
 
 import { setSelectedItem } from 'store/actions';
 import { ActionTypeToPayloadType } from 'store/types';

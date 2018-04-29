@@ -6,7 +6,6 @@ import { AcDocumentation } from 'components/AcDocumentation/AcDocumentation';
 export const browserComponent: ArchitecturalComponent = {
   id: 'browser',
   name: 'Browser',
-  description: 'Web browser',
   Documentation: () => {
     return (
       <AcDocumentation title="Web browser">

@@ -94,8 +94,8 @@ export const Architecture = connect<StoreProps, null, OwnProps, StoreState>(
       const nodes = new vis.DataSet();
       const edges = new vis.DataSet();
 
-      nodes.add(this.props.components.map(convertToVisNode));
-      edges.add(this.props.links.map(convertToVisEdge));
+      nodes.add(props.components.map(convertToVisNode));
+      edges.add(props.links.map(convertToVisEdge));
 
       const data = {
         nodes: nodes,
@@ -111,7 +111,7 @@ export const Architecture = connect<StoreProps, null, OwnProps, StoreState>(
         const itemId =
           _nodes.length > 0 ? _nodes[0] : _edges.length > 0 ? _edges[0] : null;
 
-        this.props.onClick(itemId);
+        props.onClick(itemId);
       });
     }
 

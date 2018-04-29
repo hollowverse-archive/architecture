@@ -17,7 +17,10 @@ export type ActionTypeToPayloadType = {
 };
 
 export type AppState = {
-  selectedArchitectureItem: { itemId: string; architecture: string } | null;
+  selectedArchitectureItem: {
+    itemId: string;
+    architecture: keyof typeof linkMap;
+  } | null;
 };
 
 export type StoreState = Readonly<AppState & { routing: RouterState }>;

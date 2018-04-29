@@ -6,7 +6,6 @@ import { AcDocumentation } from 'components/AcDocumentation/AcDocumentation';
 export const visitorComponent: ArchitecturalComponent = {
   id: 'visitor',
   name: 'Visitor',
-  description: 'Hollowverse visitor',
   Documentation: () => {
     return (
       <AcDocumentation title="Hollowverse visitor">

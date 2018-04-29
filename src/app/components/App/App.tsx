@@ -3,7 +3,6 @@ import { hot } from 'react-hot-loader';
 import cc from 'classcat';
 import Helmet from 'react-helmet-async';
 import { Route, Switch } from 'react-router';
-import { Link } from 'react-router-dom';
 
 import { LoadableHome } from 'pages/Home/LoadableHome';
 import { LoadableVisitorRequestProcessing } from 'pages/VisitorRequestProcessing/LoadableVisitorRequestProcessing';
