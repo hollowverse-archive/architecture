@@ -1,10 +1,8 @@
 import loadable from 'react-loadable';
 import { loadableDefaultOptions } from 'helpers/loadableDefaultOptions';
 
-export const LoadableVisitorRequestProcessing = loadable({
+export const LoadableUserRequest = loadable({
   ...loadableDefaultOptions,
   loader: async () =>
-    import('./VisitorRequestProcessing').then(
-      module => module.VisitorRequestProcessing,
-    ),
+    import('./UserRequest').then(module => module.UserRequest),
 });

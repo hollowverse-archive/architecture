@@ -8,7 +8,7 @@ import { Route, Switch } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import { LoadableHome } from 'pages/Home/LoadableHome';
-import { LoadableVisitorRequestProcessing } from 'pages/VisitorRequestProcessing/LoadableVisitorRequestProcessing';
+import { LoadableUserRequest } from 'pages/UserRequest/LoadableUserRequest';
 import { Container, Row, Col } from 'reactstrap';
 import { LeftNav } from 'components/LeftNav/LeftNav';
 
@@ -43,8 +43,8 @@ export const App = class extends React.Component {
             <Col sm={{ size: 8 }}>
               <Switch>
                 <Route
-                  path="/visitor-request-processing"
-                  component={LoadableVisitorRequestProcessing}
+                  path="/user-request-processing"
+                  component={LoadableUserRequest}
                 />
                 <Route component={LoadableHome} />
               </Switch>

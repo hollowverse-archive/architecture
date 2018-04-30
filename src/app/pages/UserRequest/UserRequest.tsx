@@ -8,20 +8,20 @@ import { linkMap } from 'architecturalComponents/linkMap';
 import { setSelectedItem } from 'store/actions';
 import { Link } from 'app/types';
 
-const { visitorComponent, browserComponent } = componentMap;
+const { userComponent, browserComponent } = componentMap;
 
-const visitorBrowserLink = linkMap.visitorRequestProcessing['visitor-browser'];
+const userBrowserLink = linkMap.userRequest['user-browser'];
 
-class VisitorRequestProcessingClass extends React.PureComponent<{
+class UserRequestClass extends React.PureComponent<{
   setSelectedItem(selectedItem: any): any;
 }> {
-  components = [visitorComponent, browserComponent];
+  components = [userComponent, browserComponent];
 
-  links: Link[] = [visitorBrowserLink];
+  links: Link[] = [userBrowserLink];
 
   handleClick = (itemId: string) => {
     this.props.setSelectedItem({
-      architecture: 'visitorRequestProcessing',
+      architecture: 'userRequest',
       itemId,
     });
   };
@@ -37,6 +37,6 @@ class VisitorRequestProcessingClass extends React.PureComponent<{
   }
 }
 
-export const VisitorRequestProcessing = hot(module)(
-  connect(undefined, { setSelectedItem })(VisitorRequestProcessingClass),
+export const UserRequest = hot(module)(
+  connect(undefined, { setSelectedItem })(UserRequestClass),
 );

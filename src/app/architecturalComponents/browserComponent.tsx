@@ -11,7 +11,7 @@ export const browserComponent: ArchitecturalComponent = {
       <AcDocumentation title="Web browser">
         <p>
           If the browser has cache of the content, it will return it right away
-          to the visitor.
+          to the user.
         </p>
 
         <p>

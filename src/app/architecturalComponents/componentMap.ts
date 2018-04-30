@@ -1,7 +1,7 @@
 import { browserComponent } from './browserComponent';
-import { visitorComponent } from './visitorComponent';
+import { userComponent } from './userComponent';
 
 export const componentMap = {
   browserComponent,
-  visitorComponent,
+  userComponent,
 };

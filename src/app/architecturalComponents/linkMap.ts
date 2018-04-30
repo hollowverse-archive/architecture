@@ -1,5 +1,5 @@
-import { visitorRequestProcessing } from 'architecturalComponents/visitorRequestProcessingLinks';
+import { userRequest } from 'architecturalComponents/userRequestLinks';
 
 export const linkMap = {
-  visitorRequestProcessing,
+  userRequest,
 };

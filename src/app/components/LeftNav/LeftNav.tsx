@@ -39,9 +39,9 @@ export const LeftNav = connect((state: StoreState) => ({
           <Link
             activeClassName="active"
             className="list-group-item list-group-item-action"
-            to="/visitor-request-processing"
+            to="/user-request-processing"
           >
-            Visitor request processing
+            User request processing
           </Link>
         </ListGroup>
       );
