@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { find } from 'lodash';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import { StoreState, ActionTypeToPayloadType } from 'store/types';
 import { getSelectedArchitectureItem } from 'store/reducers';
 import { componentMap } from 'architecturalComponents/componentMap';
 import { linkMap } from 'architecturalComponents/linkMap';
+import { ListGroup, ListGroupItem } from 'reactstrap';
+import { Link } from 'components/Link/Link';
 
 type Props = {
   selectedArchitectureItem:
@@ -33,11 +35,15 @@ export const LeftNav = connect((state: StoreState) => ({
 
     renderLinks = () => {
       return (
-        <>
-          <Link to="/visitor-request-processing">
+        <ListGroup>
+          <Link
+            activeClassName="active"
+            className="list-group-item list-group-item-action"
+            to="/visitor-request-processing"
+          >
             Visitor request processing
           </Link>
-        </>
+        </ListGroup>
       );
     };
 
