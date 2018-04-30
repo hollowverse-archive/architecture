@@ -5,6 +5,7 @@ import { hot } from 'react-hot-loader';
 import cc from 'classcat';
 import Helmet from 'react-helmet-async';
 import { Route, Switch } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import { LoadableHome } from 'pages/Home/LoadableHome';
 import { LoadableVisitorRequestProcessing } from 'pages/VisitorRequestProcessing/LoadableVisitorRequestProcessing';
@@ -29,7 +30,11 @@ export const App = class extends React.Component {
         </Helmet>
 
         <Container>
-          <h1>Hollowverse Architectures</h1>
+          <div>
+            <Link className="h1" to="/">
+              Hollowverse Architectures
+            </Link>
+          </div>
 
           <Row className={css.content}>
             <Col sm={{ size: 4 }} className={css.leftNav}>
