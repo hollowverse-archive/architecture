@@ -5,7 +5,7 @@ import domready from 'domready';
 import { render } from 'react-dom';
 import { createHashHistory } from 'history';
 
-import { HotApp as App } from 'components/App/App';
+import { HotApp as App } from 'App/App';
 import { createConfiguredStore } from 'store/createConfiguredStore';
 import { HelmetProvider } from 'react-helmet-async';
 

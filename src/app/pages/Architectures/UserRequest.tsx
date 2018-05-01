@@ -3,21 +3,21 @@ import { hot } from 'react-hot-loader';
 import { connect } from 'react-redux';
 
 import { Architecture } from 'components/Architecture/Architecture';
-import { componentMap } from 'architecturalComponents/componentMap';
-import { linkMap } from 'architecturalComponents/linkMap';
+// import { componentMap } from 'architecturalComponents/componentMap';
+// import { linkMap } from 'architecturalComponents/linkMap';
 import { setSelectedItem } from 'store/actions';
 import { Link } from 'app/types';
 
-const { userComponent, browserComponent } = componentMap;
+// const { userComponent, browserComponent } = componentMap;
 
-const userBrowserLink = linkMap.userRequest['user-browser'];
+// const userBrowserLink = linkMap.userRequest['user-browser'];
 
 class UserRequestClass extends React.PureComponent<{
   setSelectedItem(selectedItem: any): any;
 }> {
-  components = [userComponent, browserComponent];
+  // components = [userComponent, browserComponent];
 
-  links: Link[] = [userBrowserLink];
+  // links: Link[] = [userBrowserLink];
 
   handleClick = (itemId: string) => {
     this.props.setSelectedItem({
@@ -27,13 +27,12 @@ class UserRequestClass extends React.PureComponent<{
   };
 
   render() {
-    return (
-      <Architecture
-        components={this.components}
-        links={this.links}
-        onClick={this.handleClick}
-      />
-    );
+    return null;
+    // <Architecture
+    //   components={this.components}
+    //   links={this.links}
+    //   onClick={this.handleClick}
+    // />
   }
 }
 

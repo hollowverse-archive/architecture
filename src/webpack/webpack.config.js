@@ -91,6 +91,10 @@ const clientSpecificConfig = {
           ...createCssModulesLoaders(),
         ],
       },
+      {
+        test: /\.md$/,
+        use: 'raw-loader',
+      },
 
       // JavaScript and TypeScript
       ...createScriptRules({ isNode: false }),

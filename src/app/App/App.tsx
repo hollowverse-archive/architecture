@@ -1,16 +1,16 @@
 // TODO: fix disabled rule below
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
+import { Route } from 'react-router';
 import { hot } from 'react-hot-loader';
 import cc from 'classcat';
 import Helmet from 'react-helmet-async';
-import { Route, Switch } from 'react-router';
 import { Link } from 'react-router-dom';
 
-import { LoadableHome } from 'pages/Home/LoadableHome';
-import { LoadableUserRequest } from 'pages/UserRequest/LoadableUserRequest';
-import { Container, Row, Col } from 'reactstrap';
-import { LeftNav } from 'components/LeftNav/LeftNav';
+import { Container } from 'reactstrap';
+import { LoadableArchitectures } from 'pages/Architectures/LoadableArchitectures';
+import { architectures } from 'architectures/architectures';
+// import { LeftNav } from 'components/LeftNav/LeftNav';
 
 import css from './App.module.scss';
 
@@ -20,7 +20,7 @@ export const App = class extends React.Component {
       <div className={cc([css.root])}>
         <Helmet
           titleTemplate="%s - Hollowverse Architecture"
-          defaultTitle="The architecture of Hollowverse"
+          defaultTitle="Hollowverse Architecture"
         >
           <meta charSet="utf-8" />
           <meta
@@ -36,20 +36,7 @@ export const App = class extends React.Component {
             </Link>
           </div>
 
-          <Row className={css.content}>
-            <Col sm={{ size: 4 }} className={css.leftNav}>
-              <LeftNav />
-            </Col>
-            <Col sm={{ size: 8 }}>
-              <Switch>
-                <Route
-                  path="/user-request-processing"
-                  component={LoadableUserRequest}
-                />
-                <Route component={LoadableHome} />
-              </Switch>
-            </Col>
-          </Row>
+          <Route path="/" component={LoadableArchitectures} />
         </Container>
       </div>
     );

@@ -1,15 +1,14 @@
-import { ArchitecturalComponent, Link } from '../types';
+import React from 'react';
+import { CommonOptions } from 'react-loadable';
 import vis from 'vis';
 
-export const colors = {
-  blue: '#0074D9',
-  green: '#2ECC40',
-};
+import { ArchitectureComponent, Link } from 'app/types';
+import { LoadingSpinner } from 'components/LoadingSpinner/LoadingSpinner';
 
 export function convertToVisNode({
   name,
   id,
-}: ArchitecturalComponent): vis.NodeOptions {
+}: ArchitectureComponent): vis.NodeOptions {
   return {
     id: id,
     label: name,

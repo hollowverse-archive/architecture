@@ -44,3 +44,8 @@ declare module 'json-loader!*' {
   const json: object;
   export default json;
 }
+
+declare module '*.md' {
+  const md: string;
+  export default md;
+}

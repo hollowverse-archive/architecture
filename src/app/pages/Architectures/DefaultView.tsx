@@ -1,7 +1,6 @@
 import React from 'react';
-import { hot } from 'react-hot-loader';
 
-class HomeClass extends React.PureComponent {
+export class DefaultView extends React.PureComponent {
   render() {
     return (
       <div>
@@ -11,5 +10,3 @@ class HomeClass extends React.PureComponent {
     );
   }
 }
-
-export const Home = hot(module)(HomeClass);
