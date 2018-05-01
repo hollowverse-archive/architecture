@@ -1,13 +1,11 @@
-import React from 'react';
-import { CommonOptions } from 'react-loadable';
 import vis from 'vis';
 
-import { ArchitectureComponent, Link } from 'app/types';
-import { LoadingSpinner } from 'components/LoadingSpinner/LoadingSpinner';
+import { ArchitectureComponent, ArchitectureLink } from 'app/types';
 
 export function convertToVisNode({
   name,
   id,
+  visNodeOptions = {},
 }: ArchitectureComponent): vis.NodeOptions {
   return {
     id: id,
@@ -18,24 +16,15 @@ export function convertToVisNode({
       background: 'white',
       highlight: '#DDDDDD',
     },
+    ...visNodeOptions,
   };
 }
 
-export function convertToVisEdge(link: Link): vis.EdgeOptions {
-  const { to, from, Documentation, ...rest } = link as any; // TODO: fix typing
-
+export function convertToVisEdge(link: ArchitectureLink): vis.EdgeOptions {
   return {
-    from: from.id,
-    to: to.id,
-    ...rest,
+    id: `${link.from.id}-${link.to.id}`,
+    from: link.from.id,
+    to: link.to.id,
+    ...(link.visEdgeOptions || {}),
   };
-}
-
-export function enhanceLink(link: Partial<Link>): Link {
-  const { from, to } = link as any; // TODO: fix typing
-
-  return {
-    id: `${from.id}-${to.id}`,
-    ...link,
-  } as any; // TODO: fix typing
 }

@@ -1,12 +1,18 @@
 import React from 'react';
 import cc from 'classcat';
 import { Route, Switch } from 'react-router';
-import { map } from 'lodash';
-
-import { Architectures, Architecture } from 'app/types';
+import { map, find } from 'lodash';
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { Row, Col, ListGroup } from 'reactstrap';
-import { Link } from './Link';
+
+import {
+  Architectures,
+  Architecture,
+  ArchitectureComponent,
+  ArchitectureLink,
+} from 'app/types';
 import { ArchitectureDiagram } from './ArchitectureDiagram';
+import { Documentation } from './Documentation';
 
 import css from './ArchitecturesLayout.module.scss';
 
@@ -16,62 +22,102 @@ type Props = {
 };
 
 type State = {
-  selectedItem: string | null;
+  selectedItemId: string | null;
 };
 
-export class ArchitecturesLayout extends React.PureComponent<Props, State> {
-  state: State = {
-    selectedItem: null,
-  };
+export const ArchitecturesLayout = withRouter(
+  class extends React.PureComponent<Props & RouteComponentProps<any>, State> {
+    state: State = {
+      selectedItemId: null,
+    };
 
-  createArchitectureDiagramComponent = (architecture: Architecture) => () => (
-    <ArchitectureDiagram
-      selectedItem={this.state.selectedItem}
-      architecture={architecture}
-      onClick={this.handleArchitectureDiagramClick}
-    />
-  );
+    handleArchitectureDiagramClick = (itemId: string | null) => {
+      this.setState({ selectedItemId: itemId });
+    };
 
-  handleArchitectureDiagramClick = (itemId: string) => {
-    this.setState({
-      selectedItem: itemId,
-    });
-  };
-
-  render() {
-    return (
-      <div className={cc([css.root])}>
-        <Row className={css.content}>
-          <Col sm={{ size: 4 }} className={css.leftNav}>
-            <ListGroup>
-              {map(this.props.architectures, (architecture, key) => (
-                <Link
-                  key={key}
-                  activeClassName="active"
-                  className="list-group-item list-group-item-action"
-                  to={`/${key}`}
-                >
-                  {architecture.name}
-                </Link>
-              ))}
-            </ListGroup>
-          </Col>
-          <Col sm={{ size: 8 }}>
-            <Switch>
-              {map(this.props.architectures, (architecture, key) => (
-                <Route
-                  key={key}
-                  path={`/${key}`}
-                  component={this.createArchitectureDiagramComponent(
-                    architecture,
-                  )}
-                />
-              ))}
-              <Route component={this.props.defaultView} />
-            </Switch>
-          </Col>
-        </Row>
-      </div>
+    createArchitectureDiagramRenderer = (architecture: Architecture) => () => (
+      <ArchitectureDiagram
+        selectedItemId={this.state.selectedItemId}
+        architecture={architecture}
+        onClick={this.handleArchitectureDiagramClick}
+      />
     );
-  }
-}
+
+    isSelectedArchitecture = (architectureName: string) =>
+      this.props.location.pathname === `/${architectureName}`;
+
+    getSelectedArchitecture = () =>
+      find(this.props.architectures, (_1, architectureName) =>
+        this.isSelectedArchitecture(architectureName),
+      );
+
+    renderLinksToArchitectures = () => (
+      <ListGroup>
+        {map(this.props.architectures, (architecture, architectureName) => (
+          <Link
+            key={architectureName}
+            className={cc([
+              'list-group-item list-group-item-action',
+              {
+                active: this.isSelectedArchitecture(architectureName),
+              },
+            ])}
+            to={`/${architectureName}`}
+          >
+            {architecture.name}
+          </Link>
+        ))}
+      </ListGroup>
+    );
+
+    renderSelectedItemDocumentation = () => {
+      const {
+        components,
+        links,
+      } = this.getSelectedArchitecture() as Architecture;
+      const { selectedItemId } = this.state;
+
+      // prettier-ignore
+      const selectedItem = (
+        find(components, ({ id }) => id === selectedItemId) ||
+        find(links, ({ id }) => id === selectedItemId)
+      ) as ArchitectureComponent | ArchitectureLink;
+
+      return (
+        <Documentation
+          title={selectedItem.name}
+          source={selectedItem.documentation}
+          onClose={this.handleArchitectureDiagramClick}
+        />
+      );
+    };
+
+    render() {
+      return (
+        <div className={cc([css.root])}>
+          <Row className={css.content}>
+            <Col sm={{ size: 4 }} className={css.leftNav}>
+              {this.state.selectedItemId
+                ? this.renderSelectedItemDocumentation()
+                : this.renderLinksToArchitectures()}
+            </Col>
+            <Col sm={{ size: 8 }}>
+              <Switch>
+                {map(this.props.architectures, (architecture, key) => (
+                  <Route
+                    key={key}
+                    path={`/${key}`}
+                    render={this.createArchitectureDiagramRenderer(
+                      architecture,
+                    )}
+                  />
+                ))}
+                <Route component={this.props.defaultView} />
+              </Switch>
+            </Col>
+          </Row>
+        </div>
+      );
+    }
+  },
+);

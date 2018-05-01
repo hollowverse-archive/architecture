@@ -1,11 +1,12 @@
 import { browser, user } from 'architectures/components/components';
 import userBrowsermd from './userBrowser.md';
-import { Link } from 'types';
+import { ArchitectureLink } from 'types';
 
-export const userBrowser: Link = {
+export const userBrowser: ArchitectureLink = {
   id: 'user-browser',
+  name: 'User-Browser',
   from: user,
   to: browser,
   documentation: userBrowsermd,
-  arrows: 'to, from',
+  visEdgeOptions: { arrows: 'to, from' },
 };

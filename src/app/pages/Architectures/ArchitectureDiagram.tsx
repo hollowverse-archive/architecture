@@ -1,16 +1,13 @@
 import React from 'react';
 import vis from 'vis';
 import { Card } from 'reactstrap';
-import { isEqual } from 'lodash';
 
 import { convertToVisNode, convertToVisEdge } from 'helpers/helpers';
 import { Architecture } from 'app/types';
 
-import css from './ArchitectureDiagram.module.scss';
-
 type Props = {
   architecture: Architecture;
-  selectedItem: string | null;
+  selectedItemId: string | null;
   onClick(itemId: string): any;
 };
 
@@ -27,10 +24,10 @@ export class ArchitectureDiagram extends React.Component<Props> {
 
   componentWillReceiveProps(nextProps: Props) {
     if (
-      !isEqual(this.props.selectedItem, nextProps.selectedItem) &&
+      this.props.selectedItemId !== nextProps.selectedItemId &&
       this.network !== null
     ) {
-      if (nextProps.selectedItem) {
+      if (nextProps.selectedItemId) {
         const selectedNode = this.getSelectedNode(nextProps);
         const selectedEdge = this.getSelectedEdge(nextProps);
 
@@ -51,13 +48,13 @@ export class ArchitectureDiagram extends React.Component<Props> {
   getSelectedNode = (props: Props) => {
     return props.architecture.components
       .map(convertToVisNode)
-      .find(({ id }) => props.selectedItem === id);
+      .find(({ id }) => props.selectedItemId === id);
   };
 
   getSelectedEdge = (props: Props) => {
     return props.architecture.links
       .map(convertToVisEdge)
-      .find(({ id }) => props.selectedItem === id);
+      .find(({ id }) => props.selectedItemId === id);
   };
 
   createArchitecture(props: Props) {
@@ -91,10 +88,9 @@ export class ArchitectureDiagram extends React.Component<Props> {
 
   render() {
     return (
-      <Card className={css.root}>
+      <Card>
         <div
           style={{ height: this.props.architecture.components.length * 100 }}
-          className={css.content}
           ref={this.setContainerRef}
         />
       </Card>
