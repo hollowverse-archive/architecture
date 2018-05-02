@@ -1,30 +1,22 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { ConnectedRouter as Router } from 'react-router-redux';
+import { Router } from 'react-router';
 import domready from 'domready';
 import { render } from 'react-dom';
 import { createHashHistory } from 'history';
 
 import { HotApp as App } from 'App/App';
-import { createConfiguredStore } from 'store/createConfiguredStore';
 import { HelmetProvider } from 'react-helmet-async';
 
 const history = createHashHistory();
-
-const { store } = createConfiguredStore({
-  history,
-});
 
 // This has to be a class in order for hot module replacement to work
 class Root extends React.PureComponent {
   render() {
     return (
       <HelmetProvider>
-        <Provider store={store}>
-          <Router history={history}>
-            <App />
-          </Router>
-        </Provider>
+        <Router history={history}>
+          <App />
+        </Router>
       </HelmetProvider>
     );
   }
