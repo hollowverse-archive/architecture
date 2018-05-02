@@ -12,7 +12,8 @@ export type ArchitectureLink = {
   name: string;
   from: ArchitectureComponent;
   to: ArchitectureComponent;
-  documentation: string;
+  documentation?: string;
+  color?: string;
   visEdgeOptions?: vis.EdgeOptions;
 };
 

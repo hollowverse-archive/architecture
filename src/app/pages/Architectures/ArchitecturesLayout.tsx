@@ -70,7 +70,7 @@ export const ArchitecturesLayout = withRouter(
       </ListGroup>
     );
 
-    renderSelectedItemDocumentation = () => {
+    getSelectedItemDocumentation = () => {
       const {
         components,
         links,
@@ -83,22 +83,28 @@ export const ArchitecturesLayout = withRouter(
         find(links, ({ id }) => id === selectedItemId)
       ) as ArchitectureComponent | ArchitectureLink;
 
-      return (
-        <Documentation
-          title={selectedItem.name}
-          source={selectedItem.documentation}
-          onClose={this.handleArchitectureDiagramClick}
-        />
-      );
+      if (selectedItem && selectedItem.documentation) {
+        return (
+          <Documentation
+            title={selectedItem.name}
+            source={selectedItem.documentation}
+            onClose={this.handleArchitectureDiagramClick}
+          />
+        );
+      } else {
+        return null;
+      }
     };
 
     render() {
+      const documentation = this.getSelectedItemDocumentation();
+
       return (
         <div className={cc([css.root])}>
           <Row className={css.content}>
             <Col sm={{ size: 4 }} className={css.leftNav}>
-              {this.state.selectedItemId
-                ? this.renderSelectedItemDocumentation()
+              {documentation
+                ? documentation
                 : this.renderLinksToArchitectures()}
             </Col>
             <Col sm={{ size: 8 }}>

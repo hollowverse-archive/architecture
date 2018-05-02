@@ -24,11 +24,13 @@ export function convertToVisEdge({
   from,
   to,
   visEdgeOptions = {},
+  color = '#0074D9',
 }: ArchitectureLink): vis.EdgeOptions {
   return {
     id: `${from.id}-${to.id}`,
     from: from.id,
     to: to.id,
+    color: { color, highlight: color },
     ...visEdgeOptions,
   };
 }
