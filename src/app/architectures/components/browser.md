@@ -3,7 +3,7 @@
 If the browser has cache of the content, it will return it right away
 to the user.
 
-If the browser does not have a cache of the content, it will hit{' '}
+If the browser does not have a cache of the content, it will hit
 `https://hollowverse.com`, which points to the [NAME OF
 CLOUDFRONT DISTRIBUTION], which serves the `index.html`.
 

@@ -1,0 +1,23 @@
+$h1Size: 1.25rem;
+
+.root {
+  h1 {
+    font-size: $h1Size;
+  }
+
+  h2 {
+    font-size: $h1Size/1.1;
+  }
+
+  h3 {
+    font-size: $h1Size/1.2;
+  }
+
+  h4 {
+    font-size: $h1Size/1.3;
+  }
+
+  h5 {
+    font-size: $h1Size/1.4;
+  }
+}

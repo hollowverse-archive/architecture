@@ -1,7 +1,8 @@
-/* React Component for Architectural Component Documentation */
 import React from 'react';
 import { Card, CardTitle, CardBody } from 'reactstrap';
 import Markdown from 'react-remarkable';
+
+import css from './Documentation.module.scss';
 
 type Props = {
   title?: string;
@@ -14,7 +15,7 @@ export class Documentation extends React.Component<Props> {
 
   render() {
     return (
-      <Card>
+      <Card className={css.root}>
         <CardBody>
           <button
             type="button"
@@ -24,8 +25,6 @@ export class Documentation extends React.Component<Props> {
           >
             <span aria-hidden="true">&times;</span>
           </button>
-
-          {this.props.title ? <CardTitle>{this.props.title}</CardTitle> : null}
 
           <Markdown source={this.props.source} />
         </CardBody>

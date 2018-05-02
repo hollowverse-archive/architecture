@@ -20,11 +20,15 @@ export function convertToVisNode({
   };
 }
 
-export function convertToVisEdge(link: ArchitectureLink): vis.EdgeOptions {
+export function convertToVisEdge({
+  from,
+  to,
+  visEdgeOptions = {},
+}: ArchitectureLink): vis.EdgeOptions {
   return {
-    id: `${link.from.id}-${link.to.id}`,
-    from: link.from.id,
-    to: link.to.id,
-    ...(link.visEdgeOptions || {}),
+    id: `${from.id}-${to.id}`,
+    from: from.id,
+    to: to.id,
+    ...visEdgeOptions,
   };
 }
