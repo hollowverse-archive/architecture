@@ -3,5 +3,5 @@ import { Architectures } from 'types';
 
 export const architectures: Architectures = {
   userRequest,
-  hollowverseDotComCloudFront,
+  hollowverseComCloudFront,
 };

@@ -4,11 +4,11 @@ export type ArchitectureComponent = {
   id: string;
   name: string;
   documentation: string;
+  additionalDocumentation: string;
   visNodeOptions?: vis.NodeOptions;
 };
 
 export type ArchitectureLink = {
-  id: string;
   name: string;
   from: ArchitectureComponent;
   to: ArchitectureComponent;
@@ -17,10 +17,14 @@ export type ArchitectureLink = {
   visEdgeOptions?: vis.EdgeOptions;
 };
 
+export type ArchitectureLinks = {
+  [linkId: string]: ArchitectureLink;
+};
+
 export type Architecture = {
   name: string;
   components: ArchitectureComponent[];
-  links: ArchitectureLink[];
+  links: ArchitectureLinks;
 };
 
 export type Architectures = {
