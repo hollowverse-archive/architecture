@@ -1,29 +1,4 @@
 {
-  "cSpell.words": [
-    "hollowverse",
-    "loglevel",
-    "promisify",
-    "webpagetest",
-    "unhandledrejection"
-  ],
-  "editor.tabSize": 2,
-  "editor.formatOnSave": true,
-  "[json]": {
-    "editor.formatOnSave": false
-  },
-  "typescript.implementationsCodeLens.enabled": true,
-  "typescript.referencesCodeLens.enabled": false,
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "eslint.options": {
-    "reportUnusedDisableDirectives": true
-  },
-  "eslint.validate": ["typescript", "typescriptreact"],
-  "eslint.enable": false,
-  "files.associations": {
-    ".gqlconfig": "javascript",
-    ".stylelintrc": "json"
-  },
-  "files.exclude": {
-    "**/node_modules/**": true
-  }
+  "markdown.preview.scrollPreviewWithEditor": false,
+  "markdown.preview.scrollEditorWithPreview": false
 }
