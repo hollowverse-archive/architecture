@@ -31,7 +31,7 @@ If a cached response is available for the resulting cache key, CloudFront return
 
 If no cached response is available, CloudFront will execute the Lambda@Edge assigned to the `origin-request` stage, which is [`routeRequestToOrigin`](https://github.com/hollowverse/route-request/blob/master/src/routeRequestToOrigin.ts).
 
-`routeRequestToOrigin` reads the `x-hollowverse-requested-environment` header and modifies the request so that it is directed to the corresponding environment.
+`routeRequestToOrigin` reads the `x-hollowverse-requested-environment` header and modifies the request so that it is directed to the corresponding environment. The process of fetching the origin response is describe in detail in [Origin Server](../originServer/originServer.md).
 
 After retrieving the content from the corresponding environment, CloudFront executes the Lambda@Edge associated with the `origin-response` stage. This is [`setHeadersOnOriginResponse`](https://github.com/hollowverse/route-request/blob/master/src/setHeadersOnOriginResponse.ts).
 
