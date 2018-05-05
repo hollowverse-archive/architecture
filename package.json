@@ -5,14 +5,16 @@
   "author": "Hollowverse",
   "license": "Unlicense",
   "scripts": {
-    "mmdc": "mmdc",
+    "build": "for file in architectures/diagrams/*.puml; do puml generate -s $file -o ${file}.svg; done",
     "clown": "clown",
-    "pre-push": "yarn common-check",
+    "pre-push": "yarn build && yarn check-git-clean",
     "pre-commit": "yarn common-check",
     "lint-staged": "lint-staged",
     "common-check": "run-p -c --aggregate-output validate-filenames 'clown check' check-integrity",
     "check-integrity": "yarn check --integrity",
-    "validate-filenames": "validate-filenames"
+    "validate-filenames": "validate-filenames",
+    "puml": "puml",
+    "check-git-clean": "git diff --exit-code"
   },
   "devDependencies": {
     "@hollowverse/clown": "^3.1.1",
@@ -27,7 +29,7 @@
     "eslint-plugin-react": "^7.7.0",
     "husky": "^1.0.0-rc.1",
     "lint-staged": "^7.0.5",
-    "mermaid.cli": "^0.4.6",
+    "node-plantuml": "^0.6.2",
     "npm-run-all": "^4.1.2",
     "prettier": "^1.12.0",
     "yarnhook": "^0.2.0"
@@ -47,6 +49,9 @@
     ],
     "**/*.js{x,}": [
       "eslint"
+    ],
+    "**/*.puml": [
+      "yarn build"
     ]
   },
   "husky": {
