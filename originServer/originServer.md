@@ -10,7 +10,7 @@ graph TD
   serveLogEndPoint --> response
 ```
 
-Lambda do not have URLs. We cannot directly call a Lambda by visiting a URL in the browser. However, Lambdas can be launched in response to triggers.
+Lambda do not have URLs out of the box, but by using [API Gateway](https://aws.amazon.com/api-gateway/) it is possible to associate a URL with a Lambda.
 
 Each hollowverse.com environment in API Gateway has a URL like this:
 
@@ -22,7 +22,7 @@ https://nwfww37l0c.execute-api.us-east-1.amazonaws.com/master/Tom_Hanks
 
 This is the API Gateway URL for the "API" wrapping our Lambdas.
 
-It is worth noting that an API in API Gateway is not limited to Lambda, but for us, all that the API does is proxying requests the Lambda.
+The API Gateway is not limited to Lambda, but for us, all that the API does is proxy requests the Lambda.
 
 URL paths in API Gateway can be mapped to different Lambda functions:
 
