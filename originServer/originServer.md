@@ -2,13 +2,12 @@
 
 ```mermaid
 graph TD
-  request(CloudFront Origin Request) --> apiGateway[API Gateway]
-  apiGateway --> servePage
-  servePage --> response(Origin Response)
-  response --> CloudFront
-  CloudFront --> setHeadersOnOriginResponse
-  setHeadersOnOriginResponse --> cfEdgeCache(CloudFront Edge Cache)
-  cfEdgeCache --> Browser
+  request(Request) --> apiGateway[API Gateway]
+  apiGateway --> whichUrlPath{What's<br>the URL<br>path?}
+  whichUrlPath --> |/log| serveLogEndPoint
+  whichUrlPath --> |Other paths| servePages
+  servePages --> response(Response)
+  serveLogEndPoint --> response
 ```
 
 Lambda do not have URLs. We cannot directly call a Lambda by visiting a URL in the browser. However, Lambdas can be launched in response to triggers.
