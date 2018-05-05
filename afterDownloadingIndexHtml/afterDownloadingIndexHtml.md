@@ -10,6 +10,7 @@ sequenceDiagram
   participant api as api hollowverse com
   participant aurora as AWS Aurora
   participant photos as photos hollowverse com
+  participant cf as CloudFront
   participant s3 as AWS S3 bucket
 
   browser ->> api: Request Notable Person data
@@ -17,8 +18,10 @@ sequenceDiagram
   aurora ->> api: Return Notable Person data
   api ->> browser: Return Notable Person data (including photo URL)
   browser ->> photos: Request photo
-  photos ->> s3: Request photo
-  s3 ->> photos: Return photo
+  photos ->> cf: Request photo
+  cf ->> s3: Fetch photo
+  s3 ->> cf: Cache photo
+  cf ->> photos: Return photo
   photos ->> browser: Return photo
 ```
 
@@ -29,13 +32,16 @@ sequenceDiagram
     participant browser as Browser
     participant algolia as AlgoliaSearch
     participant photos as photos hollowverse com
+    participant cf as CloudFront
     participant s3 as AWS S3 bucket
 
     browser ->> algolia: Request results for user search
     algolia ->> browser: Return search results (including photo URLs)
     browser ->> photos: Request photo
-    photos ->> s3: Request photo
-    s3 ->> photos: Return photo
+    photos ->> cf: Request photo
+    cf ->> s3: Fetch photo
+    s3 ->> cf: Cache photo
+    cf ->> photos: Return photo
     photos ->> browser: Return photo
 ```
 
