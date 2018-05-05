@@ -29,8 +29,6 @@ URL paths in API Gateway can be mapped to different Lambda functions:
 * `/log` is mapped to the function [`serveLogEndpoint`](https://github.com/hollowverse/hollowverse/blob/fa81a9ddb39fa908f9eb8fe4524e46db486134fd/src/serveLogEndpoint.ts).
 * Any other path (i.e. `/{proxy+}`) is mapped the function [`servePages`](https://github.com/hollowverse/hollowverse/blob/fa81a9ddb39fa908f9eb8fe4524e46db486134fd/src/servePages.ts).
 
-![A Lambda function associated with API Gateway](./apiGatewayLambdaIntegration.png)
-
 The associations are defined [in `serverless.yml`](https://github.com/hollowverse/hollowverse/blob/fa81a9ddb39fa908f9eb8fe4524e46db486134fd/serverless.yml#L30). [Serverless](https://serverless.com/) takes care of creating the API and the Lambda functions and integrating the functions with the API.
 
 Visiting a path like `/Tom_Hanks` will trigger an HTTP event in Lambda causing the associated function to execute. The function will respond with the response for `/Tom_Hanks`.
