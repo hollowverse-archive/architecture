@@ -1,15 +1,18 @@
 # Serving `index.html`
 
 ```mermaid
-graph TD
-  user(User types <br>hollowverse.com<br>in a browser) --> dns{Is IP<br>address<br>cached?}
-  dns --> |Yes| hcf[Get index.html from<br>hollowverse.com CloudFront]
-  hcf --> response(Send index.html to the browser)
-  dns --> |No| route53[Get IP address from<br>Route 53]
-  route53 --> hcf
+sequenceDiagram
+  participant browser as Browser
+  participant route53 as AWS Route 53
+  participant hcf as hollowverse.com CloudFront
+
+  browser ->> route53: Request IP address of hollowverse.com
+  route53 ->> browser: Return IP address
+  browser ->> hcf: Request index.html
+  hcf ->> browser: Return index.html
 ```
 
-An initial user request to Hollowverse is handled as illustrated in this diagram.
+An initial user request to Hollowverse is handled as illustrated in the diagram above.
 
 Hollowverse uses [AWS Route 53](./TK-link-to-configurations) for DNS management.
 

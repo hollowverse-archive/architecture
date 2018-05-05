@@ -2,10 +2,10 @@
 
 ```mermaid
 graph TD
-  start(Receive request) --> aetvr["Assign beta, master, or other<br>environment to request<br><br>(assignEnvironmentToViewerRequest)"]
+  start(Request) --> aetvr["Assign beta, master, or other<br>environment to request<br><br>(assignEnvironmentToViewerRequest)"]
   aetvr --> isCached{Is content<br>cached for<br>assigned<br>environment?}
   isCached --> |Yes| cachedContent[Get cached content]
-  cachedContent --> response(Send response)
+  cachedContent --> response(Response)
   isCached --> |No| routeRequestToOrigin["Determine the server<br>for the assigned<br>environment<br><br>(routeRequestToOrigin)"]
   routeRequestToOrigin --> whichEnv{Which<br>environment<br>was<br>selected?}
   whichEnv -- beta --> beta[Retrieve content from<br>beta environment]
