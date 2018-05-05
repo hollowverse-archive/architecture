@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "pre-push": "yarn common-check"
+  }
+}
