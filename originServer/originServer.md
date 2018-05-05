@@ -10,7 +10,7 @@ graph TD
   serveLogEndPoint --> response
 ```
 
-Lambda do not have URLs out of the box, but by using [API Gateway](https://aws.amazon.com/api-gateway/) it is possible to associate a URL with a Lambda.
+Lambdas do not have URLs out of the box, but by using [API Gateway](https://aws.amazon.com/api-gateway/) it is possible to associate a URL with a Lambda.
 
 Each hollowverse.com environment in API Gateway has a URL like this:
 
@@ -22,7 +22,7 @@ https://nwfww37l0c.execute-api.us-east-1.amazonaws.com/master/Tom_Hanks
 
 This is the API Gateway URL for the "API" wrapping our Lambdas.
 
-The API Gateway is not limited to Lambda, but for us, all that the API does is proxy requests the Lambda.
+The API Gateway is not limited to Lambda, but for us, all that the API does is proxy requests to the Lambda.
 
 URL paths in API Gateway can be mapped to different Lambda functions:
 
@@ -33,5 +33,5 @@ The associations are defined [in `serverless.yml`](https://github.com/hollowvers
 
 Visiting a path like `/Tom_Hanks` will trigger an HTTP event in Lambda causing the associated function to execute. The function will respond with the response for `/Tom_Hanks`.
 
-The Lambda@Edge [`routeRequestToOrigin`](https://github.com/hollowverse/route-request/blob/master/src/routeRequestToOrigin.ts) routes environments to the API Gateway URLs (for example `beta` is routed to https://w5ch1jftqc.execute-api.us-east-1.amazonaws.com/beta and `master` is routed to https://nwfww37l0c.execute-api.us-east-1.amazonaws.com/master).
+The Lambda@Edge [`routeRequestToOrigin`](https://github.com/hollowverse/route-request/blob/master/src/routeRequestToOrigin.ts) routes environments to the corresponding API Gateway URLs (for example `beta` is routed to https://w5ch1jftqc.execute-api.us-east-1.amazonaws.com/beta and `master` is routed to https://nwfww37l0c.execute-api.us-east-1.amazonaws.com/master).
 This process is described in detail in [hollowverse.com CloudFront distribution](../hollowverseComCloudFront/hollowverseComCloudFront.md)
