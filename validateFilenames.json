@@ -2,9 +2,7 @@
   "rules": [
     {
       "validation": "camelCase",
-      "patterns": [
-        "**/*"
-      ]
+      "patterns": ["**/*"]
     },
     {
       "validation": "PascalCase",
@@ -20,7 +18,8 @@
         "**/docker-compose.yml",
         "**/Dockerfile*",
         "**/LICENSE",
-        "**/README.md"
+        "**/README.md",
+        "**/c__*"
       ]
     }
   ]

@@ -5,16 +5,17 @@
   "author": "Hollowverse",
   "license": "Unlicense",
   "scripts": {
-    "build": "for file in architectures/diagrams/*.puml; do puml generate -s $file -o ${file}.svg; done",
+    "build": "run-s generate-svg post-process-svg",
+    "generate-svg": "for file in architectures/diagrams/*.puml; do puml generate -s $file -o ${file}.svg; done;",
+    "post-process-svg": "for file in architectures/diagrams/*.puml.svg; do echo $(remove-html-comments $file) > $file; done;",
     "clown": "clown",
-    "pre-push": "yarn build && yarn check-git-clean",
+    "pre-push": "yarn common-check",
     "pre-commit": "yarn common-check",
     "lint-staged": "lint-staged",
     "common-check": "run-p -c --aggregate-output validate-filenames 'clown check' check-integrity",
     "check-integrity": "yarn check --integrity",
     "validate-filenames": "validate-filenames",
-    "puml": "puml",
-    "check-git-clean": "git diff --exit-code"
+    "puml": "puml"
   },
   "devDependencies": {
     "@hollowverse/clown": "^3.1.1",
@@ -32,6 +33,7 @@
     "node-plantuml": "^0.6.2",
     "npm-run-all": "^4.1.2",
     "prettier": "^1.12.0",
+    "remove-html-comments": "^1.0.2",
     "yarnhook": "^0.2.0"
   },
   "lint-staged": {
@@ -49,9 +51,6 @@
     ],
     "**/*.js{x,}": [
       "eslint"
-    ],
-    "**/*.puml": [
-      "yarn build"
     ]
   },
   "husky": {
