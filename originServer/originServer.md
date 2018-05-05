@@ -12,13 +12,7 @@ graph TD
 
 Lambda do not have URLs. We cannot directly call a Lambda by visiting a URL in the browser. However, Lambdas can be launched in response to triggers.
 
-A trigger can be:
-
-* a specific point in time set according to a schedule (like how [`track-performance`](https://github.com/hollowverse/track-performance) is run everyday).
-* a new file being added to S3 (like how [`process-image`](https://github.com/hollowverse/process-image) crops new NP images)
-* an HTTP request incoming to API Gateway
-
-So API Gateway is a way to associate a URL with a Lambda. Each environment in API Gateway has a URL like this:
+Each hollowverse.com environment in API Gateway has a URL like this:
 
 ```
 https://nwfww37l0c.execute-api.us-east-1.amazonaws.com/master/Tom_Hanks
