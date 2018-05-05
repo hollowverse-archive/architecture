@@ -13,6 +13,9 @@
   "[json]": {
     "editor.formatOnSave": false
   },
+  "[diagram]": {
+    "editor.formatOnSave": false
+  },
   "files.associations": {
     "**/.babelrc": "jsonc",
     "**/.babelrc.json": "jsonc",

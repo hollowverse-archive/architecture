@@ -1,0 +1,12 @@
+@startuml
+:Request;
+:API Gateway;
+
+if (What's the URL path?) then (/log)
+  :serveLogEndpoint;
+else (Any other path)
+  :servePages;
+endif
+
+:Response;
+@enduml

@@ -1,7 +1,0 @@
-graph TD
-  request(Request) --> apiGateway[API Gateway]
-  apiGateway --> whichUrlPath{What's<br>the URL<br>path?}
-  whichUrlPath --> |/log| serveLogEndPoint
-  whichUrlPath --> |Other paths| servePages
-  servePages --> response(Response)
-  serveLogEndPoint --> response

@@ -1,0 +1,24 @@
+@startuml
+participant Browser as browser
+participant AlgoliaSearch as algolia
+participant "photos.hollowverse.com" as photos
+participant CloudFront as cf
+participant "AWS S3 bucket" as s3
+
+browser -> algolia: Request results\nfor user search
+activate algolia
+algolia -> browser: Return search\nresults (including\nphoto URLs)
+deactivate algolia
+browser -> photos: Request photo
+activate photos
+photos -> cf: Request photo
+activate cf
+cf -> s3: Fetch photo
+activate s3
+s3 -> cf: Cache photo
+deactivate s3
+cf -> photos: Return photo
+deactivate cf
+photos -> browser: Return photo
+deactivate photos
+@enduml

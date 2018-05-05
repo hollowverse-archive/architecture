@@ -1,0 +1,17 @@
+@startuml
+:Request;
+:Assign ""beta"", ""master"", or other\nenvironment to request\n\n(""assignEnvironmentToViewerRequest"");
+
+if (is response cached\nfor the assigned environment?) then (Yes)
+  :Get cached content;
+else (No)
+  :Determine the server\nfor the assigned\nenvironment\n\n(""routeRequestToOrigin"");
+
+  :Retrieve content from assigned\nenvironment\n\n""beta"", ""master"", or any other\nenvironment;
+
+  :Set headers on response\nbefore sending it back\n\n(""setHeadersOnOriginResponse"");
+  :Add content to cahce\nfor subsequent requests;
+endif
+
+:Response;
+@enduml
