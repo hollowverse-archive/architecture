@@ -1,6 +1,8 @@
 # Origin Server
 
-![](./diagrams/originServer.mmd.svg)
+<p align="center">
+<img src="./diagrams/originServer.puml.svg">
+</p>
 
 Lambdas do not have URLs out of the box, but by using [API Gateway](https://aws.amazon.com/api-gateway/) it is possible to associate a URL with a Lambda.
 

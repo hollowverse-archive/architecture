@@ -1,6 +1,8 @@
 # Serving `index.html`
 
-![](./diagrams/serveIndexHtml.mmd.svg)
+<p align="center">
+<img src="./diagrams/serveIndexHtml.puml.svg">
+</p>
 
 An initial user request to Hollowverse is handled as illustrated in the diagram above.
 

@@ -4,15 +4,21 @@ This documents what happens after the user loads `index.html` of `hollowverse.co
 
 ## Notable Person page (e.g. `/Tom_Hanks`)
 
-![](./diagrams/afterDownloadingIndexHtmlNotablePersonPage.mmd.svg)
+<p align="center">
+<img src="./diagrams/afterDownloadingIndexHtmlNotablePersonPage.puml.svg">
+</p>
 
 ## Search page (`/search`)
 
-![](./diagrams/afterDownloadingIndexHtmlSearchPage.mmd.svg)
+<p align="center">
+<img src="./diagrams/afterDownloadingIndexHtmlSearchPage.puml.svg">
+</p>
 
 ## Any Hollowverse page
 
-![](./diagrams/afterDownloadingIndexAnyHollowversePage.mmd.svg)
+<p align="center">
+<img src="./diagrams/afterDownloadingIndexHtmlAnyHollowversePage.puml.svg">
+</p>
 
 All of Hollowverse pages log events to SumoLogic and Google Analytics.
 

@@ -1,6 +1,8 @@
 # hollowverse.com CloudFront distribution
 
-![](./diagrams/hollowverseComCloudFront.mmd.svg)
+<p align="center">
+<img src="./diagrams/hollowverseComCloudFront.puml.svg">
+</p>
 
 When CloudFront receives the request for the page, it executes the [Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html) associated with the `viewer-request` stage. This is [`assignEnvironmentToViewerRequest`](https://github.com/hollowverse/route-request/blob/master/src/assignEnvironmentToViewerRequest.ts).
 
