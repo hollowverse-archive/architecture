@@ -1,0 +1,7 @@
+sequenceDiagram
+  participant browser as Browser
+  participant sl as SumoLogic
+  participant ga as Google Analytics
+
+  browser ->> sl: Log events to SumoLogic
+  browser ->> ga: Log events to Google Analytics

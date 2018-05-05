@@ -1,14 +1,6 @@
 # Origin Server
 
-```mermaid
-graph TD
-  request(Request) --> apiGateway[API Gateway]
-  apiGateway --> whichUrlPath{What's<br>the URL<br>path?}
-  whichUrlPath --> |/log| serveLogEndPoint
-  whichUrlPath --> |Other paths| servePages
-  servePages --> response(Response)
-  serveLogEndPoint --> response
-```
+![](./diagrams/originServer.mmd.svg)
 
 Lambdas do not have URLs out of the box, but by using [API Gateway](https://aws.amazon.com/api-gateway/) it is possible to associate a URL with a Lambda.
 

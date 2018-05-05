@@ -1,22 +1,6 @@
 # hollowverse.com CloudFront distribution
 
-```mermaid
-graph TD
-  start(Request) --> aetvr["Assign beta, master, or other<br>environment to request<br><br>(assignEnvironmentToViewerRequest)"]
-  aetvr --> isCached{Is content<br>cached for<br>assigned<br>environment?}
-  isCached --> |Yes| cachedContent[Get cached content]
-  cachedContent --> response(Response)
-  isCached --> |No| routeRequestToOrigin["Determine the server<br>for the assigned<br>environment<br><br>(routeRequestToOrigin)"]
-  routeRequestToOrigin --> whichEnv{Which<br>environment<br>was<br>selected?}
-  whichEnv -- beta --> beta[Retrieve content from<br>beta environment]
-  whichEnv -- master --> master[Retrieve content from<br>master environment]
-  whichEnv -- other --> other[Retrieve content from<br>whatever environment]
-  beta --> setHeaders["Set headers on response<br>before sending it back<br><br>(setHeadersOnOriginResponse)"]
-  master --> setHeaders
-  other --> setHeaders
-  setHeaders --> cache[Add response to cache<br>for subsequent requests]
-  cache --> response
-```
+![](./diagrams/hollowverseComCloudFront.mmd.svg)
 
 When CloudFront receives the request for the page, it executes the [Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html) associated with the `viewer-request` stage. This is [`assignEnvironmentToViewerRequest`](https://github.com/hollowverse/route-request/blob/master/src/assignEnvironmentToViewerRequest.ts).
 

@@ -1,0 +1,18 @@
+sequenceDiagram
+  participant browser as Browser
+  participant api as api hollowverse com
+  participant aurora as AWS Aurora
+  participant photos as photos hollowverse com
+  participant cf as CloudFront
+  participant s3 as AWS S3 bucket
+
+  browser ->> api: Request Notable Person data
+  api ->> aurora: Request Notable Person data
+  aurora ->> api: Return Notable Person data
+  api ->> browser: Return Notable Person data (including photo URL)
+  browser ->> photos: Request photo
+  photos ->> cf: Request photo
+  cf ->> s3: Fetch photo
+  s3 ->> cf: Cache photo
+  cf ->> photos: Return photo
+  photos ->> browser: Return photo
