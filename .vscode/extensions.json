@@ -9,6 +9,7 @@
     "kisstkondoros.csstriggers",
     "codezombiech.gitignore",
     "pflannery.vscode-versionlens",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "jebbs.plantuml"
   ]
 }
