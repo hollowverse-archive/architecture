@@ -1,11 +1,11 @@
 @startuml
 participant Browser as browser
 participant "api.hollowverse.com" as api
-participant "AWS Aurora" as aurora
 participant "photos.hollowverse.com" as photos
-participant CloudFront as cf
+participant "AWS Aurora" as aurora
 participant "AWS S3 bucket" as s3
 
+activate browser
 browser -> api: Request\nNotable Person data
 activate api
 api -> aurora: Request\nNotable Person data
@@ -16,14 +16,11 @@ api -> browser: Return\nNotable Person data\n(including photo URL)
 deactivate api
 browser -> photos: Request photo
 activate photos
-photos -> cf: Request photo
-activate cf
-cf -> s3: Fetch photo
+photos -> s3: Request photo
 activate s3
-s3 -> cf: Cache photo
+s3 -> photos: Return photo
 deactivate s3
-cf -> photos: Return photo
-deactivate cf
 photos -> browser: Return photo
 deactivate photos
+deactivate browser
 @enduml

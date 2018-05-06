@@ -17,7 +17,7 @@ This repository contains documentation of the various architectures used in Holl
 
 The architectures are documented in [`/architectures`](./architectures). Each markdown file describes one architecture. Inside `/architectures`, there's a folder named [`/diagrams`](./architectures/diagrams), which contains the [PlantUML](http://plantuml.com/) (`.puml`) files as well as the `svg` images which are generated from the `puml` files.
 
-The markdown files link to the generated `svg` diagrams.
+The `svg` images are referenced inside the markdown files to illustrate the documented architectures.
 
 ### Editing files
 
@@ -27,7 +27,7 @@ To get started
 1.  `cd` into it
 1.  `yarn install`
 
-Now feel free to edit stuff. We recommend using VS Code and installing the [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml) extension for it so that you can preview the PlantUML files as you edit them.
+Now feel free to edit stuff. We recommend using VS Code and installing the [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml) extension so that you can preview the PlantUML files as you edit them.
 
 When you're done, run
 

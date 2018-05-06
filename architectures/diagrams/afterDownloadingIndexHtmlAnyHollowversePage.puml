@@ -1,8 +1,15 @@
 @startuml
 participant Browser as browser
+participant "hollowverse.com" as hollowverseCom
 participant SumoLogic as sl
 participant "Google Analytics" as ga
 
+activate browser
+browser -> hollowverseCom: Request CSS\nand JS files
+activate hollowverseCom
+hollowverseCom -> browser: Return CSS\nand JS files
+deactivate hollowverseCom
 browser -> sl: Log events\nto SumoLogic
 browser -> ga: Log events\nto Google Analytics
+deactivate browser
 @enduml

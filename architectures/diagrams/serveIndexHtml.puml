@@ -1,10 +1,10 @@
 @startuml
 participant Browser as browser
 participant "AWS Route 53" as route53
-participant "hollowverse.com CloudFront" as hcf
+participant "hollowverse.com" as hollowverseCom
 
 browser -> route53: Request\nIP address of\nhollowverse.com
 route53 -> browser: Return IP address
-browser -> hcf: Request index.html
-hcf -> browser: Return index.html
+browser -> hollowverseCom: Request index.html
+hollowverseCom -> browser: Return index.html
 @enduml
