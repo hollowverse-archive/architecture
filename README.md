@@ -1,4 +1,4 @@
-# Hollowverse Architectures
+# Hollowverse Architectures [![Build Status](https://travis-ci.org/hollowverse/architecture.svg?branch=master)](https://travis-ci.org/hollowverse/architecture)
 
 This repository contains documentation of the various architectures used in Hollowverse.
 

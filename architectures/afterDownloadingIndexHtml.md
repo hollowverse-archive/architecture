@@ -8,9 +8,9 @@ This documents what happens after the user loads `index.html` of `hollowverse.co
 <img src="./diagrams/afterDownloadingIndexHtmlAnyHollowversePage.puml.svg">
 </p>
 
-After the browser downloads `index.html` for any page, as described [here](./serveIndexHtml.md), the first thing the browser will do is request the CSS and JS files from [hollowverse.com CloudFront distribution](./hollowverseComCloudFront.md).
+After the browser downloads `index.html` for any page the first thing the browser will do is request the CSS and JS files from [hollowverse.com CloudFront distribution](./hollowverseComCloudFront.md).
 
-Most hollowverse.com also send logging and analytics events to SumoLogic and Google Analytics.
+Most hollowverse.com pages also send logging and analytics events to SumoLogic and Google Analytics.
 
 SumoLogic logging is used for short term debugging and monitoring.
 
