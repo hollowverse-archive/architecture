@@ -1,0 +1,22 @@
+@startuml
+participant Developer as developer
+participant "[[https://github.com/hollowverse/build-env GitHub\nhollowverse/build-env]]" as gh
+participant "Travis CI" as travis
+participant "[[https://hub.docker.com/ hub.docker.com]]" as dockerHub
+
+developer -> gh: Merge changes\nto ""master""
+gh -> travis: Notify Travis CI\nof changes\non master
+activate travis
+travis -> gh: Download\nrepo content
+activate gh
+gh -> travis: Upload\nrepo content
+deactivate gh
+note over travis : Build\nDocker\nimage
+travis -> dockerHub: Upload\nDocker image
+activate dockerHub
+dockerHub -> travis: Response ok
+deactivate dockerHub
+travis -> gh: Notify GitHub\nof success
+deactivate travis
+gh -> developer: Show green badge\nso developer\nknows all is ok
+@enduml
