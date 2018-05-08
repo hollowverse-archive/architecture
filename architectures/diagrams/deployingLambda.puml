@@ -1,8 +1,9 @@
 @startuml
 actor Developer as developer
-participant "GitHub\nhollowverse/build-env" as gh
+participant "GitHub\nhollowverse/hollowverse" as gh
 participant "Travis CI" as travis
 participant "hub.docker.com" as dockerHub
+participant "Amazon\nWeb\nServices" as aws
 
 developer -> gh: Merge changes\nto ""master""
 gh -> travis: Notify Travis CI\nof changes\non ""master""
@@ -11,11 +12,15 @@ travis -> gh: Download\nrepo content
 activate gh
 gh -> travis: Upload\nrepo content
 deactivate gh
-note over travis : Build\nDocker\nimage
-travis -> dockerHub: Upload\nDocker image
+travis -> dockerHub: Download\nDocker image
 activate dockerHub
-dockerHub -> travis: Response ok
+dockerHub -> travis: Upload\nDocker image
 deactivate dockerHub
+note over travis: Build code and\nrun deployment\ninside Docker\ncontainer
+travis -> aws: Serverless framework\nconfigures AWS and uploads\nbuild artifacts to AWS
+activate aws
+aws -> travis: Response ok
+deactivate aws
 travis -> gh: Notify GitHub\nof success
 deactivate travis
 gh -> developer: Show green badge\nso developer\nknows all is ok
