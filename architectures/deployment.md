@@ -14,13 +14,13 @@ The Docker images which are used by Travis CI have their own deployment pipeline
 
 ### How the Docker images are configured
 
-Our Docker images expect that the code will be mounted at `/repo` inside the container, which allows the container access to the source code. When Docker starts a container, it executes the [`CMD` instruction](https://github.com/hollowverse/build-env/blob/2db31a84529b223dc84802104d301c82735ebff3/Dockerfile#L20), which are usually:
+Our Docker images expect that the code will be mounted at `/repo` inside the container, which allows the container access to the source code. When Docker starts a container, it first sets the working directory to `/repo`, and then executes the [`CMD` instruction](https://github.com/hollowverse/build-env/blob/2db31a84529b223dc84802104d301c82735ebff3/Dockerfile#L20), which is usually:
 
 ```bash
 yarn && yarn deploy
 ```
 
-The Docker images closely matches the target deployment environment. For example, if we are targeting Lambda with Node.js 8, the image will contain Node.js 8 and all the native runtime libraries that are expected to be available in Lambda execution environment. Additionally, the images contain some binaries and tools that are required to build some Node.js packages but are not required at runtime.
+The Docker images closely match the target deployment environment. For example, if we are targeting Lambda with Node.js 8, the image will contain Node.js 8 and all the native runtime libraries that are expected to be available in Lambda execution environment. Additionally, the images contain some binaries and tools that are required to build some Node.js packages but are not required at runtime.
 
 Because the Lambda execution environment is pretty restricted, we try to ensure that no extraneous dependencies are available at build time, to avoid any possible runtime errors.
 
