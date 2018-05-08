@@ -8,6 +8,7 @@ This repository contains documentation of the various architectures used in Holl
 * [After downloading `index.html`](./architectures/afterDownloadingIndexHtml.md)
 * [hollowverse.com CloudFront distribution](./architectures/hollowverseComCloudFront.md)
 * [hollowverse.com origin server](./architectures/originServer.md)
+* [How deployment works in Hollowverse](./architectures/deployment.md)
 
 ---
 
