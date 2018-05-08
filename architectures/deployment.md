@@ -1,4 +1,4 @@
-# Deploying
+# How deployment works in Hollowverse
 
 Most Hollowverse repos are built by Travis CI in Docker containers, which are based on images which get downloaded from [hub.docker.com](https://hub.docker.com/) at build time.
 
