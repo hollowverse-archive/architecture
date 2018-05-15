@@ -37,3 +37,7 @@ yarn build
 ```
 
 ...to build the `svg` files from the `puml` files.
+
+---
+
+[If you'd like to tell us something, or need help with anything...](https://github.com/hollowverse/hollowverse/wiki/Help)
