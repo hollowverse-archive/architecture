@@ -40,4 +40,4 @@ yarn build
 
 ---
 
-[If you'd like to tell us something, or need help with anything...](https://github.com/hollowverse/hollowverse/wiki/Help)
+[If you need help or wanna get in touch...](https://github.com/hollowverse/hollowverse/wiki/Help)
